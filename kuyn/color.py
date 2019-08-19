@@ -1,85 +1,45 @@
+import math
+
 class Color:
-    def __init__(self, a: int, r: int, g: int, b: int, magnitude: float) -> None:
+    def __init__(self, r: int, g: int, b: int, a: float = 1.0) -> None:
         self.a = a
         self.r = r
         self.g = g
         self.b = b
-        self.magnitude = magnitude
 
+    @property
+    def magnitude(self):
+        return math.sqrt((self.r - 0)^2 + (self.g - 0)^2 + (self.b - 0)^2)
 
-    #Addition of 2 colors //// Addition of a color and int
-
-    def __add__(self, other) -> list:
-
-
+    def __add__(self, other):
+        """ comment """
         if isinstance(other, int):
-            new_a = self.a + other
-            new_r = self.r + other
-            new_g = self.g + other
-            new_b = self.b + other
-            return(list([new_a, new_r, new_g, new_b]))
+            return Color(r=self.r + other, g=self.g + other, b=self.b + other, a=self.a + other)
 
         elif isinstance(other, Color):
-            return list([self.a + other.a, self.r + other.r, self.g + other.g, self.b + other.b])
+            return Color(r=self.r + other.r, g=self.g + other.g, b=self.b + other.b, a=self.a + other.a)
 
         else:
-            return_error = list(["Nothing added?"])
-            return(return_error)
+            raise Exception("Added type is not supported.")
 
-    #Substraction of 2 colors //// Substraction of a color and int
-
-    def __sub__(self, other) -> list:
+    def __sub__(self, other):
         
         if isinstance(other, int):
-            new_a = self.a - other
-            new_r = self.r - other
-            new_g = self.g - other
-            new_b = self.b - other
-            return(list([new_a, new_r, new_g, new_b]))
+            return Color(r=self.r - other, g=self.g - other, b=self.b - other, a=self.a - other)
 
         elif isinstance(other, Color):
-            return list([self.a - other.a, self.r - other.r, self.g - other.g, self.b - other.b])
+            return Color(r=self.r - other.r, g=self.g - other.g, b=self.b - other.b, a=self.a - other.a)
 
         else:
-            return_error = list(["Nothing added?"])
-            return(return_error)
-
-
-    #Checking for Equality of 2 colors
+            raise Exception("Subtracted type is not supported.")
 
     def __eq__(self, other: object) -> bool:
+
         if isinstance(other, Color):
             if(self.a == other.a and self.r == other.r and self.g == other.g and self.b == other.b):
                 return True
         return False
 
-
-
+    def __mul__(self, scalar: float):
     
-
-    #Multiplication of a color and int
-
-    def __mul__(self, multiplied_float: float) -> list:
-        
-        new_a = self.a * multiplied_float
-        new_r = self.r * multiplied_float
-        new_g = self.g * multiplied_float
-        new_b = self.b * multiplied_float
-        if(new_a > 100):
-            if(new_r > 255 or new_g > 255 or new_b > 255):
-                error_rgb = "Red, Green or Blue CANNOT be more than 255"
-            error_a = "Alpha cannot be larger than 100"   
-        elif(new_r > 255 or new_g > 255 or new_b > 255):
-            error_rgb = "Red, Green or Blue CANNOT be more than 255"
-
-        return(list([new_a, new_r, new_g, new_b]))
-        
-
-
-color1 = Color(20,40,25,53, 0)
-color2 = Color(204,34,53,65, 0)
-
-print(color1 + color2)
-print(color1 + 2)
-print(color1 * 2)
-print(color1 - color2)
+        return Color(r=self.a * scalar, g=self.r * scalar, b=self.g * scalar, a=self.b * scalar)
