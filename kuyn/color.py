@@ -3,15 +3,19 @@ import sys
 
 
 class Color:
-    def __init__(self, r: int, g: int, b: int, a: float = 1.0) -> None:
-        self.__a = a
-        self.__r = r
-        self.__g = g
-        self.__b = b
+    def __init__(self, r: int, g: int, b: int, a: float = 100.0) -> None:
+        self.a = a
+        self.r = r
+        self.g = g
+        self.b = b
 
     @property
     def magnitude(self):
-        return math.sqrt((self.__r - 0) ^ 2 + (self.__g - 0) ^ 2 + (self.__b - 0) ^ 2)
+        return math.sqrt(
+            (self.__r - 0) ^ 2 +
+            (self.__g - 0) ^ 2 +
+            (self.__b - 0) ^ 2
+        )
 
     @property
     def r(self):
@@ -30,77 +34,91 @@ class Color:
         return self.__a
 
     @r.setter
-    def set_r(self, new_r):
-        if new_r > 255:
-            raise Exception("r value cannot be greater than 255")
+    def r(self, new_r):
+        if new_r > 255 or new_r < 0:
+            raise Exception("r must be in range [0,255]")
         self.__r = new_r
 
     @g.setter
-    def set_g(self, new_g):
-        if new_g > 255:
-            raise Exception("r value cannot be greater than 255")
+    def g(self, new_g):
+        if new_g > 255 or new_g < 0:
+            raise Exception("g must be in range [0,255]")
         self.__g = new_g
 
     @b.setter
-    def set_b(self, new_b):
-        if new_b > 255:
-            raise Exception("r value cannot be greater than 255")
+    def b(self, new_b):
+        if new_b > 255 or new_b < 0:
+            raise Exception("b must be in range [0,255]")
         self.__b = new_b
 
     @a.setter
-    def set_a(self, new_a):
-        if new_a > 255:
-            raise Exception("r value cannot be greater than 255")
+    def a(self, new_a):
+        if new_a > 100 or new_a < 0:
+            raise Exception("a must be in range [0,100]")
         self.__a = new_a
 
     def set_rgba(self, r: int, g: int, b: int, a: int):
-        self.set_r(new_r=r)
-        self.set_g(new_g=g)
-        self.set_b(new_b=b)
-        self.set_a(new_a=a)
+        self.r = r
+        self.g = g
+        self.b = b
+        self.a = a
 
-    def __add__(self, other):        
+    def __add__(self, other):
         if isinstance(other, int):
-            self.set_r(new_r=self.r + other)
-            self.set_g(new_g=self.g + other)
-            self.set_b(new_b=self.b + other)
-            self.set_a(new_a=self.a + other)
-            return Color(self.r, self.g, self.b, self.a)
+            return Color(
+                r=self.r + other,
+                g=self.g + other,
+                b=self.b + other,
+                a=self.a + other,
+            )
 
-        elif isinstance(other, Color):           
-            self.set_r(new_r=self.r + other)
-            self.set_g(new_g=self.g + other)
-            self.set_b(new_b=self.b + other)
-            self.set_a(new_a=self.a + other)
-            return Color(self.r, self.g, self.b, self.a)
+        elif isinstance(other, Color):
+            return Color(
+                r=self.r + other.r,
+                g=self.g + other.g,
+                b=self.b + other.b,
+                a=self.a + other.a,
+            )
 
         else:
             raise Exception("Added type is not supported.")
 
-    def sub(self, other):      
-        if isinstance(other, int):         
-            self.set_r(new_r=self.r - other)
-            self.set_g(new_g=self.g - other)
-            self.set_b(new_b=self.b - other)
-            self.set_a(new_a=self.a - other)
-            return Color(self.r, self.g, self.b, self.a)
+    def __sub__(self, other):      
+        if isinstance(other, int):
+            return Color(
+                r=self.r - other,
+                g=self.g - other,
+                b=self.b - other,
+                a=self.a - other,
+            )
 
-        elif isinstance(other, Color):    
-            self.set_r(new_r=self.r - other)
-            self.set_g(new_g=self.g - other)
-            self.set_b(new_b=self.b - other)
-            self.set_a(new_a=self.a - other)
-            return Color(self.r, self.g, self.b, self.a)
+        elif isinstance(other, Color):
+            return Color(
+                r=self.r - other.r,
+                g=self.g - other.g,
+                b=self.b - other.b,
+                a=self.a - other.a,
+            )
 
         else:
             raise Exception("Subtracted type is not supported.")
 
-    def eq(self, other: object) -> bool:
+    def __eq__(self, other: object) -> bool:
 
         if isinstance(other, Color):
-            if(self.a == other.a and self.r == other.r and self.g == other.g and self.b == other.b):
+            if(
+                self.a == other.a and
+                self.r == other.r and
+                self.g == other.g and
+                self.b == other.b
+            ):
                 return True
         return False
 
-    def mul(self, scalar: float):
-        Color(r=self.a * scalar, g=self.r * scalar, b=self.g * scalar, a=self.b * scalar)
+    def __mul__(self, scalar: int):
+        return Color(
+            r=self.r * scalar,
+            g=self.g * scalar,
+            b=self.b * scalar,
+            a=self.a * scalar,
+        )
