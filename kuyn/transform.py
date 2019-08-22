@@ -5,23 +5,42 @@ import math
 
 def H_rotate(HSL_list, num: int):
 
-    
+    num = num + 1
     add_sub_num = 1/num
-    num = num - 1
     count = 0
     comp_color_list = []
-    while(num > count):
+    print(add_sub_num)
+    print(HSL_list[0])
 
-        if(HSL_list[0] < 0.5):
-            h2 = HSL_list[0] + add_sub_num
+    if(num > 1):
+        while(num > count):
+
+            if(HSL_list[0] + add_sub_num > 1):
+                h2 = HSL_list[0] + add_sub_num - 1
+                count += 1
+                HSL_list = [h2, HSL_list[1], HSL_list[2]]
+                comp_color_list.append(HSL_list)
+            else:
+                h2 = HSL_list[0] + add_sub_num
+                count += 1
+                HSL_list = [h2, HSL_list[1], HSL_list[2]]
+                comp_color_list.append(HSL_list)
+
+               
+    else:
+        if(HSL_list[0] > 0.5):
+            h2 = HSL_list[0] - add_sub_num 
+            
         else:
-            h2 = HSL_list[0] - add_sub_num
-
+            h2 = HSL_list[0] + add_sub_num
         HSL_list = [h2, HSL_list[1], HSL_list[2]]
         comp_color_list.append(HSL_list)
-        count += 1
+
+        
+    
     print(comp_color_list)
-    return HSL_list
+    return comp_color_list
+
 
 def complement_2(color: Color):
     R = round(math.sqrt(255**2 - color.r**2))
