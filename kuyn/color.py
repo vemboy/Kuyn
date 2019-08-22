@@ -1,9 +1,8 @@
 import math
 import sys
 
-
 class Color:
-    def __init__(self, r: int, g: int, b: int, a: float = 100.0) -> None:
+    def __init__(self, r: int, g: int, b: int, a: float = 1.0)-> None:
         self.a = a
         self.r = r
         self.g = g
@@ -53,7 +52,7 @@ class Color:
 
     @a.setter
     def a(self, new_a):
-        if new_a > 100 or new_a < 0:
+        if new_a > 1.0 or new_a < 0.0:
             raise Exception("a must be in range [0,100]")
         self.__a = new_a
 
@@ -69,7 +68,7 @@ class Color:
                 r=self.r + other,
                 g=self.g + other,
                 b=self.b + other,
-                a=self.a + other,
+
             )
 
         elif isinstance(other, Color):
@@ -77,7 +76,6 @@ class Color:
                 r=self.r + other.r,
                 g=self.g + other.g,
                 b=self.b + other.b,
-                a=self.a + other.a,
             )
 
         else:
@@ -89,7 +87,6 @@ class Color:
                 r=self.r - other,
                 g=self.g - other,
                 b=self.b - other,
-                a=self.a - other,
             )
 
         elif isinstance(other, Color):
@@ -97,7 +94,7 @@ class Color:
                 r=self.r - other.r,
                 g=self.g - other.g,
                 b=self.b - other.b,
-                a=self.a - other.a,
+
             )
 
         else:
@@ -122,3 +119,21 @@ class Color:
             b=self.b * scalar,
             a=self.a * scalar,
         )
+    
+
+
+
+
+    
+
+        
+
+
+
+
+
+
+
+
+
+
