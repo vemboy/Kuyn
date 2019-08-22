@@ -1,2 +1,2 @@
 # Kuyn
-Color Library
+Color Manipulation Library
