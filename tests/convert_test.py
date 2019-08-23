@@ -20,7 +20,6 @@ class TestConvert:
         assert RGB[1] == color_1.g
         assert RGB[2] == color_1.b
 
-
     def test_hex_to_RGB(self):
         hex_num_1 = '#32a852'
         RGB = hex_to_RGB(hex_num_1)
@@ -32,10 +31,4 @@ class TestConvert:
         hex_num_1 = '#32a852'
         color_1 = Color(r=50, g=168, b=82, a=1.0)
         hex_num = RGB_to_hex(color_1)
-        assert hex_num == hex_num_1  
-        
-
-        
-        
-        
-        
+        assert hex_num == hex_num_1

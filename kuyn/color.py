@@ -1,6 +1,8 @@
 import math
 import sys
 from typing import NamedTuple
+
+
 class Color:
     def __init__(self, r: int, g: int, b: int, a: float = 1.0)-> None:
         self.a = a
@@ -120,27 +122,18 @@ class Color:
             a=self.a * scalar,
         )
 
+
 class HSL(NamedTuple):
     H: int
     S: int
     L: int
+
 
 class RGB(NamedTuple):
     R: int
     G: int
     B: int
 
+
 class ColorHex(NamedTuple):
     value: str
-
-        
-
-
-
-
-
-
-
-
-
-
