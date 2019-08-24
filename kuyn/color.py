@@ -10,6 +10,12 @@ class Color:
         self.g = g
         self.b = b
 
+
+    @property
+    def RGB(self):
+        return RGB(R=self.r, G=self.g, B=self.b)
+
+
     @property
     def magnitude(self):
         return math.sqrt(
@@ -122,18 +128,21 @@ class Color:
             a=self.a * scalar,
         )
 
+    def __repr__(self):
+        return 'Color(r={}, g={}, b={}, a={})'.format(self.r, self.g, self.b, self.a)
+
 
 class HSL(NamedTuple):
-    H: int
-    S: int
-    L: int
+    H: int  # 0-360 
+    S: int  # 0-100
+    L: int  # 0-100
 
 
 class RGB(NamedTuple):
-    R: int
-    G: int
-    B: int
+    R: int  # 0-255
+    G: int  # 0-255
+    B: int  # 0-255
 
 
 class ColorHex(NamedTuple):
-    value: str
+    value: str  # '#XXXXXX'

@@ -2,11 +2,6 @@ from kuyn.color import Color, HSL, RGB, ColorHex
 import math
 
 
-def Color_to_HSL(color: Color) -> HSL:
-    rgb = RBG(color.r, color.g, color.b)
-    return RGB_to_HSL(rgb)
-
-
 def RGB_to_HSL(rgb: RGB) -> HSL:
     r = rgb.R/255
     g = rgb.G/255
@@ -49,6 +44,7 @@ def RGB_to_HSL(rgb: RGB) -> HSL:
     H = round(H_degree)
     S = round(S*100)
     L = round(L*100)
+
     return HSL(H=H, S=S, L=L)
 
 
@@ -120,16 +116,16 @@ def HSL_to_RGB(hsl: HSL) -> RGB:
             elif(3 * temp_B > 2):
                 B = temp_2
 
-    return RGB(R=round(R*255), G=math.floor(G*255), B=round(B*255))
+    return RGB(R=round(R*255), G=round(G*255), B=round(B*255))
 
 
 def hex_to_RGB(color_hex: ColorHex) -> RGB:
-    h = color_hex.value.lstrip('#')
+    h = color_hex.lstrip('#')
     rgb = tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
     return RGB(R=rgb[0], G=rgb[1], B=rgb[2])
 
 
 def RGB_to_hex(rgb: RGB) -> ColorHex:
     hex_tamplate = '#%02x%02x%02x'
-    hex_out = hex_tamplate % (rgb.r, rgb.g, rgb.b)
+    hex_out = hex_tamplate % (rgb.R, rgb.G, rgb.B)
     return ColorHex(value=hex_out)

@@ -69,7 +69,3 @@ class TestColor:
         color_1 = Color(r=1, g=2, b=3, a=0.5)
         assert color_1 * 2 == Color(r=2, g=4, b=6, a=1)
 
-    def test_distance(self):
-        color_1 = Color(r=178, g=200, b=216, a=1.0)
-        color_2 = Color(r=10, g=211, b=67, a=1.0)
-        get_distance(color_1, color_2)
