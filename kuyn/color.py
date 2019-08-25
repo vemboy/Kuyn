@@ -133,15 +133,15 @@ class Color:
 
 
 class HSL(NamedTuple):
-    H: int  # 0-360 
-    S: int  # 0-100
-    L: int  # 0-100
+    H: float  # 0.-360.
+    S: float  # 0.-100.
+    L: float  # 0.-100.
 
 
 class RGB(NamedTuple):
-    R: int  # 0-255
-    G: int  # 0-255
-    B: int  # 0-255
+    R: float  # 0.-255.
+    G: float  # 0.-255.
+    B: float  # 0.-255.
 
 
 class ColorHex(NamedTuple):
