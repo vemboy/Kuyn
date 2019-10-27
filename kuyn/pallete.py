@@ -28,12 +28,14 @@ class Pallete:
             if(a == b):
                 raise Exception("Duplicate colors spotted")
         else:
-            self.colors.append(new_colors)
+            self.colors.extend(new_colors)
 
     def avg_distance(self):
         distance = 0
         counter = 0
         for a, b in itertools.combinations(self.colors, 2):
+            print(a)
+            print(b)
             couple_distance = get_distance(a,b)
             distance = distance + couple_distance
             counter = counter + 1

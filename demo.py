@@ -7,7 +7,7 @@ from PIL import Image
 pallete_1 = Pallete([Color(4,5,6), Color(11,11,11), Color(4,5,7)])
 pallete_1.add([Color(22,22,22), Color(25,24,22)])
 print(pallete_1.colors)
-
+pallete_1.avg_distance()
 
 
 """HSL_list = RGB_to_HSL(color_1.RGB)
