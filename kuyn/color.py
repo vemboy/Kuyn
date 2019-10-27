@@ -1,6 +1,8 @@
 import math
 import sys
-from typing import NamedTuple
+import itertools
+from typing import NamedTuple, List
+from PIL import Image
 
 
 class Color:
@@ -146,3 +148,12 @@ class RGB(NamedTuple):
 
 class ColorHex(NamedTuple):
     value: str  # '#XXXXXX'
+
+
+
+
+    
+
+            
+
+        
