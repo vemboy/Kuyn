@@ -22,23 +22,11 @@ class TestColor:
         assert color.a == 0.2
 
     def test_setter_invalid(self):
-        color = Color(r=1, g=2, b=3, a=0.1)
-        with pytest.raises(Exception):
-            color.r = 256
-        with pytest.raises(Exception):
-            color.g = 256
-        with pytest.raises(Exception):
-            color.b = 256
-        with pytest.raises(Exception):
-            color.a = 101
-        with pytest.raises(Exception):
-            color.r = -1
-        with pytest.raises(Exception):
-            color.g = -1
-        with pytest.raises(Exception):
-            color.b = -1
-        with pytest.raises(Exception):
-            color.a = -1
+        color = Color(r=266, g=-2, b=333, a=1.2)
+        assert color.r == 255
+        assert color.g == 0
+        assert color.b == 255
+        assert color.a == 1
 
     def test_setrgba(self):
         color = Color(r=1, g=2, b=3, a=1)
