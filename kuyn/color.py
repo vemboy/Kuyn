@@ -1,5 +1,8 @@
 import math
 import sys
+import itertools
+from typing import NamedTuple, List
+from PIL import Image
 
 
 class Color:
@@ -8,6 +11,7 @@ class Color:
         self.r = r
         self.g = g
         self.b = b
+        self.RGB = RGB(self.r, self.g, self.b)
 
     @property
     def magnitude(self):
@@ -65,17 +69,12 @@ class Color:
 
     @a.setter
     def a(self, new_a):
-<<<<<<< Updated upstream
-        if new_a > 100 or new_a < 0:
-            raise Exception("a must be in range [0,100]")
-=======
         if new_a > 1.0:
             new_a = 1.0
         elif new_a < 0:
             new_a = 0
         else:
             new_a = new_a
->>>>>>> Stashed changes
         self.__a = new_a
 
     def set_rgba(self, r: int, g: int, b: int, a: int):
@@ -144,3 +143,21 @@ class Color:
             b=self.b * scalar,
             a=self.a * scalar,
         )
+    def __repr__(self):
+            return 'Color(r={}, g={}, b={}, a={})'.format(self.r, self.g, self.b, self.a)
+
+
+class HSL(NamedTuple):
+    H: float  # 0.-360.
+    S: float  # 0.-100.
+    L: float  # 0.-100.
+
+
+class RGB(NamedTuple):
+    R: float  # 0.-255.
+    G: float  # 0.-255.
+    B: float  # 0.-255.
+
+
+class ColorHex(NamedTuple):
+    value: str  # '#XXXXXX'

@@ -1,5 +1,7 @@
 from kuyn.color import Color
 import math
+from math import floor
+from kuyn.color import HSL, RGB
 
 def get_distance(color_1: Color, color_2: Color):
     distance = math.sqrt(
@@ -18,3 +20,9 @@ def invert(color: Color):
 
 def get_max(l, n):
     return sorted(l)[-n:]
+
+def floor_rgb(rgb: RGB):
+    return RGB(R=floor(rgb.R), G=floor(rgb.G), B=floor(rgb.B))
+
+def round_hsl(hsl: HSL):
+    return HSL(H=round(hsl.H), S=round(hsl.S), L=round(hsl.L))

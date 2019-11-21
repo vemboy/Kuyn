@@ -1,4 +1,4 @@
-from kuyn.util import get_distance, get_max
+from testing.util import get_distance, get_max
 from typing import NamedTuple, List
 from kuyn.color import Color
 import math
