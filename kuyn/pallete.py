@@ -1,4 +1,5 @@
-from testing.util import get_distance, get_max
+from kuyn.util import *
+from testing.util import *
 from typing import NamedTuple, List
 from kuyn.color import Color
 import math
@@ -15,25 +16,25 @@ class Pallete:
         return self.__colors
 
     @colors.setter
-    def colors(self, new_colors: List[Color]):
+    def colors(self, new_colors: List[Color]) -> None: 
         for a, b in itertools.combinations(new_colors, 2):
             if(a == b):
                 print("Duplicate colors spotted")
-                return 0
+                return
 
 
         self.__colors = new_colors
 
-    def add(self, new_colors: List[Color]):
+    def add(self, new_colors: List[Color]) -> None:
         for a, b in itertools.combinations(new_colors, 2):
             if(a == b):
-                print("Duplicate colors spotted")
-                return 0
+                print("Duplicate colors spotted in the colors passed.")
+                return 
 
         for i in new_colors:
             if(i in self.colors):
-                print("Duplicate colors spotted")
-                return 0
+                print("Between the colors passed and the colors already in the Pallete, duplicates are spotted.")
+                return 
 
         self.colors.extend(new_colors)
         
@@ -49,27 +50,34 @@ class Pallete:
         return distance
 
     def remove_extremes(self):
+        if(len(self.colors) <= 1):
+            print("Pallete is empty!")
+            return
         distance1 = get_distance(self.colors[0],self.colors[1])
         counter = 0
-        color_pairs = []
+        extreme_colors = []
         for a, b in itertools.combinations(self.colors, 2):
             if(get_distance(a,b) > distance1):
                 distance1 = get_distance(a,b)
                 counter += 1
-                color_pairs += [a,b]
-        for i in range(len(color_pairs)):
-            if color_pairs[i] in self.colors:
-                self.colors.remove(color_pairs[i])
+                extreme_colors += [a,b]
+        for i in range(len(extreme_colors)):
+            if extreme_colors[i] in self.colors:
+                self.colors.remove(extreme_colors[i])
 
         
     def remove_outlier(self, n = 1):
-        if(n > len(self.colors) or n > len(self.colors)):
+        if(n > len(self.colors)):
             print("n cannot be larger than/equal to the amount of colors in the Pallete")
-            return 0
+            print("No colors were removed")
+            return 
         if(len(self.colors) < 3):
             print("The Pallete has less than 3 colors")
-            return 0
-        all_list = []
+            return 
+        if(len(self.colors) == 0):
+            print("The Pallete has no colors inside!")
+            return
+        all_selected = []
         a_0 = self.colors[0]
         distance = 0
         counter = 0
@@ -78,11 +86,11 @@ class Pallete:
             if(a_0 == a):
                 counter += 1
                 a_0 = self.colors[counter]
-                all_list.append(distance)
+                all_selected.append(distance)
                 distance = 0
-        max_list = get_max(all_list, n)
+        max_list = get_max(all_selected, n)
         for i in range(n):
-            max_distance_index = all_list.index(max_list[i])
+            max_distance_index = all_selected.index(max_list[i])
             self.colors.remove(self.colors[max_distance_index])
 
 

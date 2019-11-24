@@ -1,8 +1,9 @@
 import math
 import sys
 import itertools
+from testing.util import *
 from typing import NamedTuple, List
-from PIL import Image
+
 
 
 class Color:
@@ -39,42 +40,22 @@ class Color:
 
     @r.setter
     def r(self, new_r):
-        if new_r > 255:
-            new_r = 255
-        elif new_r < 0:
-            new_r = 0
-        else:
-            new_r = new_r
+        new_r = clamp(new_r, 0, 255)
         self.__r = new_r
 
     @g.setter
     def g(self, new_g):
-        if new_g > 255:
-            new_g = 255
-        elif new_g < 0:
-            new_g = 0
-        else:
-            new_g = new_g
+        new_g = clamp(new_g, 0, 255)
         self.__g = new_g
 
     @b.setter
     def b(self, new_b):
-        if new_b > 255:
-            new_b = 255
-        elif new_b < 0:
-            new_b = 0
-        else:
-            new_b = new_b
+        new_b = clamp(new_b, 0, 255)
         self.__b = new_b
 
     @a.setter
     def a(self, new_a):
-        if new_a > 1.0:
-            new_a = 1.0
-        elif new_a < 0:
-            new_a = 0
-        else:
-            new_a = new_a
+        new_a = clamp(new_a, 0, 1.0)
         self.__a = new_a
 
     def set_rgba(self, r: int, g: int, b: int, a: int):
@@ -101,8 +82,7 @@ class Color:
             )
 
         else:
-            print("Added type is not supported.")
-            return 0
+            raise Exception("Added type is not supported")
 
     def __sub__(self, other):      
         if isinstance(other, int):
@@ -122,8 +102,8 @@ class Color:
             )
 
         else:
-            print("Subtracted type is not supported.")
-            return 0
+            raise Exception("Subtracted type is not supported")
+
     def __eq__(self, other: object) -> bool:
 
         if isinstance(other, Color):

@@ -21,12 +21,12 @@ class TestColor:
         assert color.b == 4
         assert color.a == 0.2
 
-    def test_setter_invalid(self):
+    def test_setter_clamp(self):
         color = Color(r=266, g=-2, b=333, a=1.2)
         assert color.r == 255
         assert color.g == 0
         assert color.b == 255
-        assert color.a == 1
+        assert color.a == 1.0
 
     def test_setrgba(self):
         color = Color(r=1, g=2, b=3, a=1)

@@ -1,6 +1,6 @@
 from kuyn.convert import RGB_to_HSL, HSL_to_RGB, RGB_to_hex, hex_to_RGB
 from kuyn.color import RGB, HSL, ColorHex
-from testing.util import floor_rgb, round_hsl
+from kuyn.util import floor_rgb, round_hsl
 import pytest
 
 

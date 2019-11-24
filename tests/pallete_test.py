@@ -1,5 +1,7 @@
 from kuyn.color import *
 from kuyn.pallete import *
+from kuyn.util import *
+from testing.util import *
 import pytest
 
 class TestPallete:
@@ -12,7 +14,7 @@ class TestPallete:
     def test_setters(self): 
 
         pallete_1 = Pallete([Color(22,33,44), Color(33,44,55), Color(44,55,66)])
-        pallete_1 = Pallete([Color(22,22,22)])
+        pallete_1.colors = [Color(22,22,22)]
 
         assert pallete_1.colors == [Color(22,22,22)]
 

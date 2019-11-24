@@ -1,6 +1,6 @@
 from kuyn.transform import *
 from kuyn.convert import *
-from testing.util import floor_rgb
+from kuyn.util import floor_rgb
 import pytest
 
 

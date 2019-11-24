@@ -1,5 +1,5 @@
 from typing import List
-from kuyn.color import Color
+from kuyn.color import Color, RGB
 from kuyn.convert import *
 import math
 
