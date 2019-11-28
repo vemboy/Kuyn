@@ -1,9 +1,8 @@
 import math
 import sys
 import itertools
-from testing.util import *
+from kuyn.util import *
 from typing import NamedTuple, List
-
 
 
 class Color:
@@ -40,23 +39,19 @@ class Color:
 
     @r.setter
     def r(self, new_r):
-        new_r = clamp(new_r, 0, 255)
-        self.__r = new_r
+        self.__r  = clamp(new_r, 0, 255)
 
     @g.setter
     def g(self, new_g):
-        new_g = clamp(new_g, 0, 255)
-        self.__g = new_g
+        self.__g  = clamp(new_g, 0, 255)
 
     @b.setter
     def b(self, new_b):
-        new_b = clamp(new_b, 0, 255)
-        self.__b = new_b
+        self.__b  = clamp(new_b, 0, 255)
 
     @a.setter
     def a(self, new_a):
-        new_a = clamp(new_a, 0, 1.0)
-        self.__a = new_a
+        self.__a  = clamp(new_a, 0, 1.0)
 
     def set_rgba(self, r: int, g: int, b: int, a: int):
         self.r = r

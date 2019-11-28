@@ -1,5 +1,5 @@
 from kuyn.color import *
-from kuyn.util import *
+from kuyn.color_util import *
 from testing.util import *
 import pytest
 

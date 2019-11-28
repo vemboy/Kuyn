@@ -84,7 +84,7 @@ ColorMap(image)
 - `fill(c: Color)`
 - `avarageDistance()`
 - `palette(int n)`
- - Creates a pallete with the first n amount of dom colors (n < x)
+ - Creates a palette with the first n amount of dom colors (n < x)
 - `ReplaceAreas(int n, p)`
  - Finds all the colors that seem the same to the human eye that seem the same to the dom color, to the first n amount of dom colors. Replaces those areas with the palette given in parameters, if the amounts don't match, it replaces till either area's or the palette is finished. (IFFY)
 
