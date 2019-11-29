@@ -14,8 +14,7 @@ class TestConvert:
         assert round_hsl(out_hsl) == round_hsl(expected_hsl)
 
     def test_HSL_to_RGB(self):
-        return
-        assert 1 == 1
+        pytest.skip("gotta be fixed")
         #in_hsl = HSL(H=136, S=54, L=43)
         #out_rgb = HSL_to_RGB(in_hsl)
 

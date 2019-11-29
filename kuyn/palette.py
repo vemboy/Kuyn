@@ -18,11 +18,6 @@ class Palette:
 
     @colors.setter
     def colors(self, new_colors: List[Color]) -> None: 
-        #for a, b in itertools.combinations(new_colors, 2):
-        #    if(a == b):
-        #        print("Duplicate colors spotted")
-        #        return
-
         if(has_duplicate(new_colors, "Duplicate colors spotted", 2)):
             return
 
@@ -75,9 +70,11 @@ class Palette:
             return 
         if(len(self.colors) < 3):
             print("The Palette has less than 3 colors")
+            print("No colors were removed")
             return 
         if(len(self.colors) == 0):
             print("The Palette has no colors inside!")
+            print("No colors were removed")
             return
         all_selected = []
         a_0 = self.colors[0]

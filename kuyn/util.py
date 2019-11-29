@@ -15,3 +15,4 @@ def has_duplicate(colors, error_msg: str, num: int) -> bool:
         if(a == b):
             print(error_msg)
             return True
+    return False
