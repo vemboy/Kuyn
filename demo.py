@@ -1,4 +1,5 @@
-
+from kuyn.palette import *
+from kuyn.color import *
 
 """
 
@@ -11,3 +12,4 @@
 
 
 """
+

@@ -91,6 +91,7 @@ class Palette:
         for i in range(n):
             max_distance_index = all_selected.index(max_list[i])
             self.colors.remove(self.colors[max_distance_index])
+        print(self.colors)
 
 
         

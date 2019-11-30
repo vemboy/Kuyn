@@ -47,10 +47,9 @@ class TestPalette:
 
     def test_remove_outlier(self):
 
-        pallete_1 = Palette([Color(64, 222, 106), Color(51, 189, 88), Color(232, 183, 232)])
-        expected_result = [Color(64, 222, 106), Color(51, 189, 88)]
-
-        remove_outlier(pallete_1)
-        assert pallete_1 == expected_result
+        pallete_1 = Palette([Color(8, 51, 0), Color(13, 84, 0), Color(154, 184, 149)])
+        expected_result = [Color(8, 51, 0), Color(154, 184, 149)]
+        pallete_1.remove_outlier()
+        assert pallete_1.colors == expected_result
 
         
