@@ -57,7 +57,7 @@ A unique unordered set of colors
  - Returns `n` colors that have the farthest distance from the others 
 
 
-##ColorMap
+## ColorMap
 
 a matrix of colors
 
