@@ -1,8 +1,13 @@
-from kuyn.color import *
-from kuyn.color_util import *
 
-color1 = Color(5,66,77)
-color2 = Color(223, 22, 53)
 
-d = get_distance(color1, color2)
-print(d)
+"""
+
+
+1) Implement the image color taking code into Kuyn
+2) Create functions relating to upcoming project (like changing certain colors, and making similar colors form into 1 color)
+3) Start project with library -> Taking an artists multiple paintings and seeing if the distances between those images are close
+-> Trying to (by will) make a images distance smaller by changing colors but not changing the picture -> Applying some artists average distances to others
+-> Creating an image with randomly generated colors -> ETC ETC
+
+
+"""
