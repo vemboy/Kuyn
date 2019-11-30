@@ -1,5 +1,8 @@
 import math
 import sys
+import itertools
+from kuyn.util import *
+from typing import NamedTuple, List
 
 
 class Color:
@@ -8,6 +11,7 @@ class Color:
         self.r = r
         self.g = g
         self.b = b
+        self.RGB = RGB(self.r, self.g, self.b)
 
     @property
     def magnitude(self):
@@ -35,27 +39,19 @@ class Color:
 
     @r.setter
     def r(self, new_r):
-        if new_r > 255 or new_r < 0:
-            raise Exception("r must be in range [0,255]")
-        self.__r = new_r
+        self.__r  = clamp(new_r, 0, 255)
 
     @g.setter
     def g(self, new_g):
-        if new_g > 255 or new_g < 0:
-            raise Exception("g must be in range [0,255]")
-        self.__g = new_g
+        self.__g  = clamp(new_g, 0, 255)
 
     @b.setter
     def b(self, new_b):
-        if new_b > 255 or new_b < 0:
-            raise Exception("b must be in range [0,255]")
-        self.__b = new_b
+        self.__b  = clamp(new_b, 0, 255)
 
     @a.setter
     def a(self, new_a):
-        if new_a > 100 or new_a < 0:
-            raise Exception("a must be in range [0,100]")
-        self.__a = new_a
+        self.__a  = clamp(new_a, 0, 1.0)
 
     def set_rgba(self, r: int, g: int, b: int, a: int):
         self.r = r
@@ -81,7 +77,7 @@ class Color:
             )
 
         else:
-            raise Exception("Added type is not supported.")
+            raise Exception("Added type is not supported")
 
     def __sub__(self, other):      
         if isinstance(other, int):
@@ -101,7 +97,7 @@ class Color:
             )
 
         else:
-            raise Exception("Subtracted type is not supported.")
+            raise Exception("Subtracted type is not supported")
 
     def __eq__(self, other: object) -> bool:
 
@@ -122,3 +118,21 @@ class Color:
             b=self.b * scalar,
             a=self.a * scalar,
         )
+    def __repr__(self):
+            return 'Color(r={}, g={}, b={}, a={})'.format(self.r, self.g, self.b, self.a)
+
+
+class HSL(NamedTuple):
+    H: float  # 0.-360.
+    S: float  # 0.-100.
+    L: float  # 0.-100.
+
+
+class RGB(NamedTuple):
+    R: float  # 0.-255.
+    G: float  # 0.-255.
+    B: float  # 0.-255.
+
+
+class ColorHex(NamedTuple):
+    value: str  # '#XXXXXX'
