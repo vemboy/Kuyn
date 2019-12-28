@@ -1,6 +1,7 @@
 import math
 from kuyn.color import Color, HSL, RGB
 from math import floor
+import random
 
 
 
@@ -17,4 +18,11 @@ def invert(color: Color):
     G = color.g * -1 + 255
     B = color.b * -1 + 255
     return Color(R,G,B)
+
+def random_color():
+    R = random.randrange(0, 255)
+    G = random.randrange(0, 255)
+    B = random.randrange(0, 255)
+    return Color(R,G,B)
+    
 

@@ -1,4 +1,5 @@
 import itertools
+from collections import Counter
 
 def get_max(l, n):
     return sorted(l)[-n:]
@@ -16,3 +17,7 @@ def has_duplicate(colors, error_msg: str, num: int) -> bool:
             print(error_msg)
             return True
     return False
+
+def most_frequent(List): 
+    occurence_count = Counter(List) 
+    return occurence_count.most_common(1)[0][0]

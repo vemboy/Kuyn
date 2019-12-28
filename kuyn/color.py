@@ -12,6 +12,7 @@ class Color:
         self.g = g
         self.b = b
         self.RGB = RGB(self.r, self.g, self.b)
+        
 
     @property
     def magnitude(self):
@@ -120,7 +121,6 @@ class Color:
         )
     def __repr__(self):
             return 'Color(r={}, g={}, b={}, a={})'.format(self.r, self.g, self.b, self.a)
-
 
 class HSL(NamedTuple):
     H: float  # 0.-360.
