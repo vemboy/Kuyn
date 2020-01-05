@@ -58,3 +58,8 @@ class TestColor:
     def test_mult(self):
         color_1 = Color(r=1, g=2, b=3, a=1)
         assert color_1 * 2 == Color(r=2, g=4, b=6, a=2)
+
+    def test_invert(self):
+        color_1 = Color(r=2, g=2, b=2)
+        assert color_1.invert() == Color(r=253, g=253, b=253, a=1.0)
+
