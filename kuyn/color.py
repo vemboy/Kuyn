@@ -1,9 +1,9 @@
+from __future__ import annotations
 import math
 import sys
 import itertools
 from kuyn.util import *
-from typing import NamedTuple, List
-
+from typing import NamedTuple, List, Callable, Union
 
 class Color:
     def __init__(self, r: int, g: int, b: int, a: float = 100.0) -> None:
@@ -52,7 +52,7 @@ class Color:
 
     @a.setter
     def a(self, new_a):
-        self.__a  = clamp(new_a, 0, 1.0)
+        self.__a  = clamp(new_a, 0, 1)
 
     def set_rgba(self, r: int, g: int, b: int, a: int):
         self.r = r
@@ -121,6 +121,18 @@ class Color:
         )
     def __repr__(self):
             return 'Color(r={}, g={}, b={}, a={})'.format(self.r, self.g, self.b, self.a)
+    
+    #TO-DO 
+        #1) Color transform function should be able to return any of our primitives
+        #2) Figure out if we need more arguments/if Callable even works.
+        #3) Make some tests
+
+    def transform(self, func: Callable[[Color], Color]):
+        return func(self)
+
+    def invert(self) -> Color:
+        return self.transform(lambda self: Color(self.r * -1 + 255, self.g * -1 + 255, self.b * -1 + 255))
+        
 
 class HSL(NamedTuple):
     H: float  # 0.-360.
