@@ -1,3 +1,4 @@
+
 from kuyn.util import *
 from kuyn.color_util import *
 from testing.util import *
@@ -6,7 +7,6 @@ from kuyn.color import Color
 import math
 import sys
 import itertools
-
 
 class Palette: 
     def __init__(self, colors: List[Color]) -> None:
